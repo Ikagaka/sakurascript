@@ -1,0 +1,66 @@
+{
+  "name": "sakurascript",
+  "version": "0.0.1",
+  "description": "SakuraScript Parser/Builder",
+  "keywords": [
+    "ikagaka",
+    "ukagaka",
+    "sakurascript"
+  ],
+  "main": "./lib/sakurascript.js",
+  "scripts": {
+    "test": "gulp test-cli && gulp test-browser-cli",
+    "codecov": "gulp test-cli && istanbul report && cat coverage/lcov.info | codecov"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.6.5",
+    "codecov.io": "^0.1.6",
+    "codo": "^2.0.11",
+    "coffee-coverage": "^0.7.0",
+    "coffee-script": "^1.10.0",
+    "espower-coffee": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-clone": "^1.0.0",
+    "gulp-codo": "^1.0.4",
+    "gulp-coffee": "^2.3.1",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.5.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-watch": "^4.3.5",
+    "istanbul": "^0.4.0",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-coffee-preprocessor": "^0.3.0",
+    "karma-coverage": "^0.5.3",
+    "karma-detect-browsers": "^2.0.2",
+    "karma-espower-preprocessor": "0.0.4",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0",
+    "karma-mocha-debug": "^0.1.2",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-opera-launcher": "^0.3.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-safari-launcher": "^0.1.1",
+    "merge-stream": "^1.0.0",
+    "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18",
+    "power-assert": "^1.1.0",
+    "sinon": "^1.17.2"
+  },
+  "url": "https://github.com/Ikagaka/sakurascript",
+  "author": "Ikagaka",
+  "license": "MIT",
+  "contributors": [
+    "Narazaka",
+    "legokichi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ikagaka/sakurascript.git"
+  }
+}

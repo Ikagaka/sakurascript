@@ -1,0 +1,5 @@
+--compilers coffee:coffee-script/register
+--require espower-coffee/guess
+--require coffee-coverage/register-istanbul
+--ui bdd
+--recursive

@@ -1,0 +1,14 @@
+{
+  "name": "sakurascript",
+  "description": "SakuraScript Parser/Builder",
+  "dependencies": {
+  },
+  "main": ["./lib/sakurascript.js"],
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "npm-debug.log",
+    "coverage"
+  ]
+}
