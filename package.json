@@ -9,8 +9,8 @@
   ],
   "main": "./lib/sakurascript.js",
   "scripts": {
-    "test": "gulp test-cli && gulp test-browser-cli",
-    "codecov": "gulp test-cli && istanbul report && cat coverage/lcov.info | codecov"
+    "test": "gulp test-cli",
+    "codecov": "gulp test-node && cat coverage/lcov.info | codecov"
   },
   "dependencies": {},
   "devDependencies": {
@@ -24,10 +24,10 @@
     "gulp-clone": "^1.0.0",
     "gulp-codo": "^1.0.4",
     "gulp-coffee": "^2.3.1",
+    "gulp-istanbul-report": "0.0.1",
     "gulp-load-plugins": "^1.1.0",
     "gulp-mocha": "^2.1.3",
     "gulp-rename": "^1.2.2",
-    "gulp-shell": "^0.5.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.4.2",
     "gulp-watch": "^4.3.5",
@@ -50,7 +50,7 @@
     "mocha": "^2.3.3",
     "phantomjs": "^1.9.18",
     "power-assert": "^1.1.0",
-    "sinon": "^1.17.2"
+    "rimraf": "^2.4.3"
   },
   "url": "https://github.com/Ikagaka/sakurascript",
   "author": "Ikagaka",

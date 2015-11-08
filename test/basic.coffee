@@ -1,6 +1,6 @@
 if require?
   assert = require 'power-assert'
-  sakurascript = require '../src/sakurascript'
+  sakurascript = require '../src/lib/sakurascript'
   SakuraScript = sakurascript.SakuraScript
 
 scripts = [

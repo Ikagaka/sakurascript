@@ -1,41 +1,43 @@
+fs = require 'fs'
 path = require 'path'
 gulp = require 'gulp'
 merge = require 'merge-stream'
+rimraf = require 'rimraf'
 $ = (require 'gulp-load-plugins')()
 require 'espower-coffee/guess'
-process.env.COFFEECOV_INIT_ALL = "false"
-require 'coffee-coverage/register-istanbul'
 Server = require('karma').Server
 package_json = require './package.json'
+
+coffeeCoverage = require 'coffee-coverage'
+coffeeCoverage.register
+  instrumentor: 'istanbul'
+  basePath: process.cwd()
+  exclude: ['/gulpfile.coffee', '/karma.conf.coffee', '/test', '/node_modules', '/.git']
+  coverageVar: undefined
+  writeOnExit: null
+  initAll: false
 
 files =
   src:
     js: 'src/**/*.js'
     coffee: 'src/**/*.coffee'
-  dst:
-    js: 'lib/**/*.js'
   test:
     coffee: 'test/**/*.coffee'
+  coverage: 'coverage/coverage-coffee.json'
+  doc: 'doc/**/*'
 
 dirs =
   src: 'src'
-  dst: 'lib'
+  dst: '.'
 
 gulp.task 'default', ['build']
 
 gulp.task 'js', ->
-  coffee = gulp.src files.src.coffee
+  coffee = gulp.src files.src.coffee, base: dirs.src
     .pipe $.sourcemaps.init()
     .pipe $.coffee()
   coffeeu = coffee.pipe $.clone()
   merge [
-    gulp.src files.src.js
-      .pipe $.sourcemaps.init()
-      .pipe gulp.dest dirs.dst
-      .pipe $.uglify()
-      .pipe $.rename extname: '.min.js'
-      .pipe $.sourcemaps.write('.')
-      .pipe gulp.dest dirs.dst
     coffee
       .pipe $.sourcemaps.write('.')
       .pipe gulp.dest dirs.dst
@@ -46,22 +48,34 @@ gulp.task 'js', ->
       .pipe gulp.dest dirs.dst
   ]
 
-gulp.task 'build', ['js', 'test-cli', 'cov', 'test-browser', 'doc']
+gulp.task 'build', ['js', 'test', 'doc']
 
-gulp.task 'test', ['test-cli', 'test-browser']
+gulp.task 'test', ['test-node', 'test-browser']
+gulp.task 'test-cli', ['test-node', 'test-browser-cli']
 
-gulp.task 'test-cli', ->
-  gulp.src files.test.coffee
+gulp.task 'test-node', ->
+  gulp.src files.test.coffee, read: false
     .pipe $.mocha()
+    .on 'end', ->
+      cov_dir = path.dirname(files.coverage)
+      unless fs.existsSync cov_dir
+        fs.mkdirSync cov_dir
+      fs.writeFileSync files.coverage, JSON.stringify _$coffeeIstanbul
+      gulp.src "coverage/coverage-coffee.json"
+        .pipe $.istanbulReport
+          reporters: [
+            {name: 'text'}
+            {name: 'lcov'}
+          ]
 
-gulp.task 'test-browser', ['test-cli'], (done) ->
+gulp.task 'test-browser', (done) ->
   new Server
     configFile: "#{__dirname}/karma.conf.coffee"
     singleRun: true
   , done
     .start()
 
-gulp.task 'test-browser-cli', ['test-cli'], (done) ->
+gulp.task 'test-browser-cli', (done) ->
   new Server
     configFile: "#{__dirname}/karma.conf.coffee"
     singleRun: true
@@ -70,22 +84,21 @@ gulp.task 'test-browser-cli', ['test-cli'], (done) ->
   , done
     .start()
 
-gulp.task 'test-browser-watch', ['test-cli'], (done) ->
+gulp.task 'test-browser-watch', (done) ->
   new Server
     configFile: "#{__dirname}/karma.conf.coffee"
   , done
     .start()
 
-gulp.task 'cov', ['test-cli'], ->
-  gulp.src files.src.coffee
-    .pipe $.shell [path.join('node_modules/.bin/istanbul') + ' report']
+gulp.task 'clean-doc', (done) ->
+  rimraf files.doc, done
 
-gulp.task 'doc', ->
-  gulp.src files.src.coffee, read: false
+gulp.task 'doc', ['clean-doc'], ->
+  gulp.src files.src.coffee, read: false, base: dirs.src
     .pipe $.codo
       name: package_json.name
       title: package_json.name
 
 gulp.task 'watch', ->
-  gulp.start ['js', 'test-cli', 'test-browser-watch', 'doc']
-  $.watch [files.src.js, files.src.coffee, files.test.coffee], -> gulp.start ['js', 'test-cli', 'doc']
+  gulp.start ['js', 'test-node', 'test-browser-watch', 'doc']
+  $.watch [files.src.coffee, files.test.coffee], -> gulp.start ['js', 'test-node', 'doc']
