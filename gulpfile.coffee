@@ -90,6 +90,11 @@ gulp.task 'test-browser-watch', (done) ->
   , done
     .start()
 
+gulp.task 'lint', ->
+  gulp.src files.src.coffee
+    .pipe $.coffeelint()
+    .pipe $.coffeelint.reporter()
+
 gulp.task 'clean-doc', (done) ->
   rimraf files.doc, done
 

@@ -343,29 +343,29 @@ class SakuraScriptToken.NotImplemented extends SakuraScriptToken
   toSakuraScript: -> @str
 
 SakuraScript.tags = [
-  {re: /^\\([h0])/, match: (group, state) -> new SakuraScriptToken.Scope 0, group[1]}
-  {re: /^\\([u1])/, match: (group, state) -> new SakuraScriptToken.Scope 1, group[1]}
-  {re: /^\\p\[(\d+)\]/, match: (group, state) -> new SakuraScriptToken.Scope Number(group[1]), "bracket"}
-  {re: /^\\p(\d)/, match: (group, state) -> new SakuraScriptToken.Scope Number(group[1]), "nobracket"}
-  {re: /^\\s(\d)/, match: (group, state) -> new SakuraScriptToken.Surface Number(group[1]), "nobracket"}
-  {re: /^\\s\[([^\]]+)\]/, match: (group, state) -> if isNaN(group[1]) then new SakuraScriptToken.SurfaceAlias group[1] else new SakuraScriptToken.Surface Number(group[1]), "bracket"}
-  {re: /^\\b(\d)/, match: (group, state) -> new SakuraScriptToken.Balloon Number(group[1]), "nobracket"}
-  {re: /^\\b\[([^\]]+)\]/, match: (group, state) -> new SakuraScriptToken.Balloon Number(group[1]), "bracket"}
-  {re: /^\\i(\d)/, match: (group, state) -> new SakuraScriptToken.PlayAnimation Number(group[1]), "nobracket"}
-  {re: /^\\i\[(\d+)\]/, match: (group, state) -> new SakuraScriptToken.PlayAnimation Number(group[1]), "bracket"}
-  {re: /^\\i\[(\d+),wait\]/, match: (group, state) -> new SakuraScriptToken.PlayAnimationWait Number(group[1])}
-  {re: /^\\w(\d)/, match: (group, state) -> new SakuraScriptToken.SimpleWait Number group[1]}
-  {re: /^\\_w\[(\d+)\]/, match: (group, state) -> new SakuraScriptToken.PreciseWait Number group[1]}
-  {re: /^\\__w\[animation,(\d+)\]/, match: (group, state) -> new SakuraScriptToken.WaitAnimationEnd Number group[1]}
-  {re: /^\\__w\[clear\]/, match: (group, state) -> new SakuraScriptToken.ResetBeginning()}
-  {re: /^\\__w\[(\d+)\]/, match: (group, state) -> new SakuraScriptToken.WaitFromBeginning Number group[1]}
-  {re: /^\\_q/, match: (group, state) -> new SakuraScriptToken.ToggleQuick()}
-  {re: /^\\_s\[([^\]]+)\]/, match: (group, state) -> new SakuraScriptToken.ToggleSynchronize splitargs(group[1]).map (n) -> Number(n)}
-  {re: /^\\_s/, match: (group, state) -> new SakuraScriptToken.ToggleSynchronize()}
-  {re: /^\\t/, match: (group, state) -> new SakuraScriptToken.TimeCritical()}
-  {re: /^\\x/, match: (group, state) -> new SakuraScriptToken.WaitClick() }
-  {re: /^\\\*/, match: (group, state) -> new SakuraScriptToken.NoChoiceTimeout()}
-  {re: /^\\q\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) ->
+  {re: /^\\([h0])/, match: (group) -> new SakuraScriptToken.Scope 0, group[1]}
+  {re: /^\\([u1])/, match: (group) -> new SakuraScriptToken.Scope 1, group[1]}
+  {re: /^\\p\[(\d+)\]/, match: (group) -> new SakuraScriptToken.Scope Number(group[1]), "bracket"}
+  {re: /^\\p(\d)/, match: (group) -> new SakuraScriptToken.Scope Number(group[1]), "nobracket"}
+  {re: /^\\s(\d)/, match: (group) -> new SakuraScriptToken.Surface Number(group[1]), "nobracket"}
+  {re: /^\\s\[([^\]]+)\]/, match: (group) -> if isNaN(group[1]) then new SakuraScriptToken.SurfaceAlias group[1] else new SakuraScriptToken.Surface Number(group[1]), "bracket"}
+  {re: /^\\b(\d)/, match: (group) -> new SakuraScriptToken.Balloon Number(group[1]), "nobracket"}
+  {re: /^\\b\[([^\]]+)\]/, match: (group) -> new SakuraScriptToken.Balloon Number(group[1]), "bracket"}
+  {re: /^\\i(\d)/, match: (group) -> new SakuraScriptToken.PlayAnimation Number(group[1]), "nobracket"}
+  {re: /^\\i\[(\d+)\]/, match: (group) -> new SakuraScriptToken.PlayAnimation Number(group[1]), "bracket"}
+  {re: /^\\i\[(\d+),wait\]/, match: (group) -> new SakuraScriptToken.PlayAnimationWait Number(group[1])}
+  {re: /^\\w(\d)/, match: (group) -> new SakuraScriptToken.SimpleWait Number group[1]}
+  {re: /^\\_w\[(\d+)\]/, match: (group) -> new SakuraScriptToken.PreciseWait Number group[1]}
+  {re: /^\\__w\[animation,(\d+)\]/, match: (group) -> new SakuraScriptToken.WaitAnimationEnd Number group[1]}
+  {re: /^\\__w\[clear\]/, match: (group) -> new SakuraScriptToken.ResetBeginning()}
+  {re: /^\\__w\[(\d+)\]/, match: (group) -> new SakuraScriptToken.WaitFromBeginning Number group[1]}
+  {re: /^\\_q/, match: (group) -> new SakuraScriptToken.ToggleQuick()}
+  {re: /^\\_s\[([^\]]+)\]/, match: (group) -> new SakuraScriptToken.ToggleSynchronize splitargs(group[1]).map (n) -> Number(n)}
+  {re: /^\\_s/, match: (group) -> new SakuraScriptToken.ToggleSynchronize()}
+  {re: /^\\t/, match: (group) -> new SakuraScriptToken.TimeCritical()}
+  {re: /^\\x/, match: (group) -> new SakuraScriptToken.WaitClick() }
+  {re: /^\\\*/, match: (group) -> new SakuraScriptToken.NoChoiceTimeout()}
+  {re: /^\\q\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group) ->
     args = splitargs(group[1])
     if /^On/.test args[1]
       new SakuraScriptToken.EventChoice args[0], args[1], args.slice(2)
@@ -374,7 +374,7 @@ SakuraScript.tags = [
     else
       new SakuraScriptToken.ReferencesChoice args[0], args.slice(1)
   }
-  {re: /^\\__q\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) ->
+  {re: /^\\__q\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group) ->
     args = splitargs(group[1])
     if /^On/.test args[0]
       new SakuraScriptToken.BeginEventChoice args[0], args.slice(1)
@@ -383,9 +383,9 @@ SakuraScript.tags = [
     else
       new SakuraScriptToken.BeginReferencesChoice args
   }
-  {re: /^\\__q/, match: (group, state) -> new SakuraScriptToken.EndChoice()}
-  {re: /^\\q(\d*)\[((?:\\\\|\\\]|[^\]])+)\]\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) -> new SakuraScriptToken.OldReferenceChoice group[3], group[2], group[1]}
-  {re: /^\\_a\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) ->
+  {re: /^\\__q/, match: (group) -> new SakuraScriptToken.EndChoice()}
+  {re: /^\\q(\d*)\[((?:\\\\|\\\]|[^\]])+)\]\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> new SakuraScriptToken.OldReferenceChoice group[3], group[2], group[1]}
+  {re: /^\\_a\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group) ->
     args = splitargs(group[1])
     if /^On/.test args[0]
       new SakuraScriptToken.BeginEventAnchor args[0], args.slice(1)
@@ -394,52 +394,52 @@ SakuraScript.tags = [
     else
       new SakuraScriptToken.BeginReferencesAnchor args
   }
-  {re: /^\\_a/, match: (group, state) -> new SakuraScriptToken.EndAnchor()}
-  {re: /^\\n\[half\]/, match: (group, state) -> new SakuraScriptToken.HalfLineBreak()}
-  {re: /^\\n\[(\d+)\]/, match: (group, state) -> new SakuraScriptToken.PercentLineBreak Number(group[1])}
-  {re: /^\\n/, match: (group, state) -> new SakuraScriptToken.LineBreak()}
-  {re: /^\\_n/, match: (group, state) -> new SakuraScriptToken.ToggleNoAutoLineBreak()}
-  {re: /^\\_l\[([^\]]+)\]/, match: (group, state) -> [x, y] = splitargs(group[1]); new SakuraScriptToken.Location x, y}
-  {re: /^\\_b\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) ->
+  {re: /^\\_a/, match: (group) -> new SakuraScriptToken.EndAnchor()}
+  {re: /^\\n\[half\]/, match: (group) -> new SakuraScriptToken.HalfLineBreak()}
+  {re: /^\\n\[(\d+)\]/, match: (group) -> new SakuraScriptToken.PercentLineBreak Number(group[1])}
+  {re: /^\\n/, match: (group) -> new SakuraScriptToken.LineBreak()}
+  {re: /^\\_n/, match: (group) -> new SakuraScriptToken.ToggleNoAutoLineBreak()}
+  {re: /^\\_l\[([^\]]+)\]/, match: (group) -> [x, y] = splitargs(group[1]); new SakuraScriptToken.Location x, y}
+  {re: /^\\_b\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group) ->
     args = splitargs(group[1])
     if args[1] == "inline"
       new SakuraScriptToken.InlineImage args[0], args.slice(2)
     else
       new SakuraScriptToken.Image args[0], args[1], args[2], args.slice(3)
   }
-  {re: /^\\f\[([^\]]+)\]/, match: (group, state) -> args = splitargs(group[1]); new SakuraScriptToken.Font args[0], args.slice(1)}
-  {re: /^\\4/, match: (group, state) -> new SakuraScriptToken.BeFar()}
-  {re: /^\\5/, match: (group, state) -> new SakuraScriptToken.BeNear()}
-  {re: /^\\c/, match: (group, state) -> new SakuraScriptToken.Clear()}
-  {re: /^\\e/, match: (group, state) -> new SakuraScriptToken.End()}
-  {re: /^\\z/, match: (group, state) -> new SakuraScriptToken.OldChoiceEnd()}
-  {re: /^\\-/, match: (group, state) -> new SakuraScriptToken.Halt()}
-  {re: /^\\\\/, match: (group, state) -> new SakuraScriptToken.EscapeChar()}
-  {re: /^\\!\[anim,((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) -> args = splitargs(group[1]); new SakuraScriptToken.Animation args[0], args[1], args.slice(2)}
-  {re: /^\\!\[bind,((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) -> args = splitargs(group[1]); new SakuraScriptToken.Bind args[0], args[1], args[2]}
-  {re: /^\\!\[moveasync,cancel\]/, match: (group, state) -> new SakuraScriptToken.MoveAsyncCancel()}
-  {re: /^\\!\[move(async)?,((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) ->
+  {re: /^\\f\[([^\]]+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Font args[0], args.slice(1)}
+  {re: /^\\4/, match: (group) -> new SakuraScriptToken.BeFar()}
+  {re: /^\\5/, match: (group) -> new SakuraScriptToken.BeNear()}
+  {re: /^\\c/, match: (group) -> new SakuraScriptToken.Clear()}
+  {re: /^\\e/, match: (group) -> new SakuraScriptToken.End()}
+  {re: /^\\z/, match: (group) -> new SakuraScriptToken.OldChoiceEnd()}
+  {re: /^\\-/, match: (group) -> new SakuraScriptToken.Halt()}
+  {re: /^\\\\/, match: (group) -> new SakuraScriptToken.EscapeChar()}
+  {re: /^\\!\[anim,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Animation args[0], args[1], args.slice(2)}
+  {re: /^\\!\[bind,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Bind args[0], args[1], args[2]}
+  {re: /^\\!\[moveasync,cancel\]/, match: (group) -> new SakuraScriptToken.MoveAsyncCancel()}
+  {re: /^\\!\[move(async)?,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) ->
     use_class = if group[1] then SakuraScriptToken.MoveAsync else SakuraScriptToken.Move
     args = splitargs(group[2])
     new use_class args[0], args[1], args[2], args[3], args[4], args[5]
   }
-  {re: /^\\!\[lock,repaint\]/, match: (group, state) -> new SakuraScriptToken.LockRepaint()}
-  {re: /^\\!\[unlock,repaint\]/, match: (group, state) -> new SakuraScriptToken.UnlockRepaint()}
-  {re: /^\\!\[set,((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) -> args = splitargs(group[1]); new SakuraScriptToken.Set args[0], args.slice(1)}
-  {re: /^\\!\[open,((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) -> args = splitargs(group[1]); new SakuraScriptToken.Open args[0], args.slice(1)}
-  {re: /^\\__c/, match: (group, state) -> new SakuraScriptToken.OpenCommunicateBox()}
-  {re: /^\\__t/, match: (group, state) -> new SakuraScriptToken.OpenTeachBox()}
-  {re: /^\\!\[\s*raise\s*,\s*((?:\\\\|\\\]|[^\]])+)\]/, match: (group, state) -> args = splitargs(group[1]); new SakuraScriptToken.Raise args[0], args.slice(1)}
-  {re: /^\\!\[\*\]/, match: (group, state) -> new SakuraScriptToken.Marker()}
-  {re: /^\\_u\[([A-Fa-fXx0-9]+)\]/, match: (group, state) -> new SakuraScriptToken.UCSChar Number(group[1])}
-  {re: /^\\_m\[([A-Fa-fXx0-9]+)\]/, match: (group, state) -> new SakuraScriptToken.AsciiChar Number(group[1])}
-  {re: /^\\&\[([A-Za-z0-9]+)\]/, match: (group, state) -> new SakuraScriptToken.EntityChar group[1]}
-  {re: /^\\[C67+v8]/, match: (group, state) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
-  {re: /^\\_[+V]/, match: (group, state) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
-  {re: /^\\[8j]\[.*?\]/, match: (group, state) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
-  {re: /^\\_[!?v]\[.*?\]/, match: (group, state) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
-  {re: /^\\!\[.*?\]/, match: (group, state) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
-  {re: /^./, match: (group, state) -> new SakuraScriptToken.Char group[0]}
+  {re: /^\\!\[lock,repaint\]/, match: (group) -> new SakuraScriptToken.LockRepaint()}
+  {re: /^\\!\[unlock,repaint\]/, match: (group) -> new SakuraScriptToken.UnlockRepaint()}
+  {re: /^\\!\[set,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Set args[0], args.slice(1)}
+  {re: /^\\!\[open,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Open args[0], args.slice(1)}
+  {re: /^\\__c/, match: (group) -> new SakuraScriptToken.OpenCommunicateBox()}
+  {re: /^\\__t/, match: (group) -> new SakuraScriptToken.OpenTeachBox()}
+  {re: /^\\!\[\s*raise\s*,\s*((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Raise args[0], args.slice(1)}
+  {re: /^\\!\[\*\]/, match: (group) -> new SakuraScriptToken.Marker()}
+  {re: /^\\_u\[([A-Fa-fXx0-9]+)\]/, match: (group) -> new SakuraScriptToken.UCSChar Number(group[1])}
+  {re: /^\\_m\[([A-Fa-fXx0-9]+)\]/, match: (group) -> new SakuraScriptToken.AsciiChar Number(group[1])}
+  {re: /^\\&\[([A-Za-z0-9]+)\]/, match: (group) -> new SakuraScriptToken.EntityChar group[1]}
+  {re: /^\\[C67+v8]/, match: (group) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
+  {re: /^\\_[+V]/, match: (group) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
+  {re: /^\\[8j]\[.*?\]/, match: (group) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
+  {re: /^\\_[!?v]\[.*?\]/, match: (group) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
+  {re: /^\\!\[.*?\]/, match: (group) -> new SakuraScriptToken.NotImplemented group[0]} # not implemented quick
+  {re: /^./, match: (group) -> new SakuraScriptToken.Char group[0]}
 ]
 
 if module?.exports?
