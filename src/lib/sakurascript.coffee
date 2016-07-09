@@ -305,7 +305,7 @@ class SakuraScriptToken.Animation extends SakuraScriptToken
 # \\![bind,...]
 class SakuraScriptToken.Bind extends SakuraScriptToken
   constructor: (@category, @parts, @dress_up) ->
-  toSakuraScript: -> "\\![bind,#{joinargs [@category, @parts, @dress_up]}]"
+  toSakuraScript: -> "\\![bind,#{joinargs [@category, @parts].concat(if @dress_up? then [Number(@dress_up)] else [])}]"
 # \\![lock,paint]
 class SakuraScriptToken.LockRepaint extends SakuraScriptToken
   constructor: ->
@@ -335,8 +335,12 @@ class SakuraScriptToken.Set extends SakuraScriptToken
   toSakuraScript: -> "\\![set,#{joinargs [@id].concat(@args)}]"
 # \\![open,...]
 class SakuraScriptToken.Open extends SakuraScriptToken
-  constructor: (@id, @args) ->
-  toSakuraScript: -> "\\![open,#{joinargs [@id].concat(@args)}]"
+  constructor: (@command, @args) ->
+  toSakuraScript: -> "\\![open,#{joinargs [@command].concat(@args)}]"
+# \\![close,...]
+class SakuraScriptToken.Close extends SakuraScriptToken
+  constructor: (@command, @args) ->
+  toSakuraScript: -> "\\![close,#{joinargs [@command].concat(@args)}]"
 # not impremented tags
 class SakuraScriptToken.NotImplemented extends SakuraScriptToken
   constructor: (@str) ->
@@ -416,7 +420,7 @@ SakuraScript.tags = [
   {re: /^\\-/, match: (group) -> new SakuraScriptToken.Halt()}
   {re: /^\\\\/, match: (group) -> new SakuraScriptToken.EscapeChar()}
   {re: /^\\!\[anim,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Animation args[0], args[1], args.slice(2)}
-  {re: /^\\!\[bind,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Bind args[0], args[1], args[2]}
+  {re: /^\\!\[bind,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Bind args[0], args[1], if args[2]? then Number(args[2]) == 1 else null}
   {re: /^\\!\[moveasync,cancel\]/, match: (group) -> new SakuraScriptToken.MoveAsyncCancel()}
   {re: /^\\!\[move(async)?,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) ->
     use_class = if group[1] then SakuraScriptToken.MoveAsync else SakuraScriptToken.Move
@@ -427,6 +431,7 @@ SakuraScript.tags = [
   {re: /^\\!\[unlock,repaint\]/, match: (group) -> new SakuraScriptToken.UnlockRepaint()}
   {re: /^\\!\[set,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Set args[0], args.slice(1)}
   {re: /^\\!\[open,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Open args[0], args.slice(1)}
+  {re: /^\\!\[close,((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Close args[0], args.slice(1)}
   {re: /^\\__c/, match: (group) -> new SakuraScriptToken.OpenCommunicateBox()}
   {re: /^\\__t/, match: (group) -> new SakuraScriptToken.OpenTeachBox()}
   {re: /^\\!\[\s*raise\s*,\s*((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Raise args[0], args.slice(1)}
