@@ -280,24 +280,24 @@ class SakuraScriptToken.Marker extends SakuraScriptToken
   toSakuraScript: -> "\\![*]"
 # a char
 class SakuraScriptToken.Char extends SakuraScriptToken
-  constructor: (@char) ->
-  toSakuraScript: -> @char
+  constructor: (@raw_char) -> if @raw_char then @char = @raw_char.replace(/</, '&lt;').replace(/>/, '&gt;').replace(/&/, '&amp;')
+  toSakuraScript: -> @raw_char
 # \\\\
-class SakuraScriptToken.EscapeChar extends SakuraScriptToken
-  constructor: ->
+class SakuraScriptToken.EscapeChar extends SakuraScriptToken.Char
+  constructor: -> @char = "\\"
   toSakuraScript: -> "\\\\"
 # \\_u[0x01]
-class SakuraScriptToken.UCSChar extends SakuraScriptToken
-  constructor: (@char) ->
-  toSakuraScript: -> "\\_u[0x#{@char.toString(16)}]"
+class SakuraScriptToken.UCSChar extends SakuraScriptToken.Char
+  constructor: (@code_point) -> @char = "&##{@code_point};"
+  toSakuraScript: -> "\\_u[0x#{@code_point.toString(16)}]"
 # \\_m[0x01]
-class SakuraScriptToken.AsciiChar extends SakuraScriptToken
-  constructor: (@char) ->
-  toSakuraScript: -> "\\_m[0x#{@char.toString(16)}]"
+class SakuraScriptToken.AsciiChar extends SakuraScriptToken.Char
+  constructor: (@code_point) -> @char = "&##{@code_point};"
+  toSakuraScript: -> "\\_m[0x#{@code_point.toString(16)}]"
 # \\&[amp]
-class SakuraScriptToken.EntityChar extends SakuraScriptToken
-  constructor: (@char) ->
-  toSakuraScript: -> "\\&[#{@char}]"
+class SakuraScriptToken.EntityChar extends SakuraScriptToken.Char
+  constructor: (@entity) -> @char = "&#{@entity};"
+  toSakuraScript: -> "\\&[#{@entity}]"
 # \\![anim,...]
 class SakuraScriptToken.Animation extends SakuraScriptToken
   constructor: (@command, @id, @args) ->
