@@ -154,7 +154,7 @@ class SakuraScriptToken.ToggleSynchronize extends SakuraScriptToken
 class SakuraScriptToken.TimeCritical extends SakuraScriptToken
   constructor: ->
   toSakuraScript: -> "\\t"
-# \\x
+# \\x \\x[noclear]
 class SakuraScriptToken.WaitClick extends SakuraScriptToken
   constructor: (@noclear = false) ->
   toSakuraScript: -> "\\x"
