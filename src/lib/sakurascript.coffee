@@ -156,7 +156,7 @@ class SakuraScriptToken.TimeCritical extends SakuraScriptToken
   toSakuraScript: -> "\\t"
 # \\x
 class SakuraScriptToken.WaitClick extends SakuraScriptToken
-  constructor: ->
+  constructor: (@noclear = false) ->
   toSakuraScript: -> "\\x"
 # \\*
 class SakuraScriptToken.NoChoiceTimeout extends SakuraScriptToken
@@ -363,7 +363,7 @@ SakuraScript.tags = [
   {re: /^\\_s\[([^\]]+)\]/, match: (group) -> new SakuraScriptToken.ToggleSynchronize splitargs(group[1]).map (n) -> Number(n)}
   {re: /^\\_s/, match: (group) -> new SakuraScriptToken.ToggleSynchronize()}
   {re: /^\\t/, match: (group) -> new SakuraScriptToken.TimeCritical()}
-  {re: /^\\x/, match: (group) -> new SakuraScriptToken.WaitClick() }
+  {re: /^\\x(\[noclear\])?/, match: (group) -> new SakuraScriptToken.WaitClick(!!group[1]) }
   {re: /^\\\*/, match: (group) -> new SakuraScriptToken.NoChoiceTimeout()}
   {re: /^\\q\[((?:\\\\|\\\]|[^\]])+)\]/, match: (group) ->
     args = splitargs(group[1])
