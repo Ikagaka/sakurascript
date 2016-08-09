@@ -333,6 +333,7 @@ class SakuraScriptToken.Raise extends SakuraScriptToken
 class SakuraScriptToken.TimerRaise extends SakuraScriptToken
   constructor: (@event, @references) ->
   toSakuraScript: -> "\\![timerraise,#{joinargs [@event].concat(@references)}]"
+# \\![notify,...]
 class SakuraScriptToken.Notify extends SakuraScriptToken
   constructor: (@event, @references) ->
   toSakuraScript: -> "\\![notify,#{joinargs [@event].concat(@references)}]"
