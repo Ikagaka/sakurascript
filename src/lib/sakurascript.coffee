@@ -329,6 +329,13 @@ class SakuraScriptToken.MoveAsyncCancel extends SakuraScriptToken.Move
 class SakuraScriptToken.Raise extends SakuraScriptToken
   constructor: (@event, @references) ->
   toSakuraScript: -> "\\![raise,#{joinargs [@event].concat(@references)}]"
+# \\![timerraise,...]
+class SakuraScriptToken.TimerRaise extends SakuraScriptToken
+  constructor: (@event, @references) ->
+  toSakuraScript: -> "\\![timerraise,#{joinargs [@event].concat(@references)}]"
+class SakuraScriptToken.Notify extends SakuraScriptToken
+  constructor: (@event, @references) ->
+  toSakuraScript: -> "\\![notify,#{joinargs [@event].concat(@references)}]"
 # \\![set,...]
 class SakuraScriptToken.Set extends SakuraScriptToken
   constructor: (@id, @args) ->
@@ -435,6 +442,8 @@ SakuraScript.tags = [
   {re: /^\\__c/, match: (group) -> new SakuraScriptToken.OpenCommunicateBox()}
   {re: /^\\__t/, match: (group) -> new SakuraScriptToken.OpenTeachBox()}
   {re: /^\\!\[\s*raise\s*,\s*((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Raise args[0], args.slice(1)}
+  {re: /^\\!\[\s*timerraise\s*,\s*((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.TimerRaise args[0], args.slice(1)}
+  {re: /^\\!\[\s*notify\s*,\s*((?:\\\\|\\\]|[^\]])+)\]/, match: (group) -> args = splitargs(group[1]); new SakuraScriptToken.Notify args[0], args.slice(1)}
   {re: /^\\!\[\*\]/, match: (group) -> new SakuraScriptToken.Marker()}
   {re: /^\\_u\[([A-Fa-fXx0-9]+)\]/, match: (group) -> new SakuraScriptToken.UCSChar Number(group[1])}
   {re: /^\\_m\[([A-Fa-fXx0-9]+)\]/, match: (group) -> new SakuraScriptToken.AsciiChar Number(group[1])}
