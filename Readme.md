@@ -7,7 +7,8 @@
 
 [![Dependency Status](https://david-dm.org/Ikagaka/sakurascript.svg)](https://david-dm.org/Ikagaka/sakurascript)
 [![devDependency Status](https://david-dm.org/Ikagaka/sakurascript/dev-status.svg)](https://david-dm.org/Ikagaka/sakurascript#info=devDependencies)
-[![Build Status](https://travis-ci.org/Ikagaka/sakurascript.svg)](https://travis-ci.org/Ikagaka/sakurascript)
+[![Travis Build Status](https://travis-ci.org/Ikagaka/sakurascript.svg)](https://travis-ci.org/Ikagaka/sakurascript)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Ikagaka/sakurascript?svg=true)](https://ci.appveyor.com/project/Narazaka/sakurascript)
 [![codecov.io](https://codecov.io/github/Ikagaka/sakurascript/coverage.svg?branch=master)](https://codecov.io/github/Ikagaka/sakurascript?branch=master)
 [![Code Climate](https://codeclimate.com/github/Ikagaka/sakurascript/badges/gpa.svg)](https://codeclimate.com/github/Ikagaka/sakurascript)
 
