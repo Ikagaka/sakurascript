@@ -4,8 +4,6 @@
 [![npm license](https://img.shields.io/npm/l/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
 [![npm download total](https://img.shields.io/npm/dt/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
 [![npm download by month](https://img.shields.io/npm/dm/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
-[![Bower](https://img.shields.io/bower/v/sakurascript.svg)](https://github.com/Ikagaka/sakurascript)
-[![Bower](https://img.shields.io/bower/l/sakurascript.svg)](https://github.com/Ikagaka/sakurascript)
 
 [![Dependency Status](https://david-dm.org/Ikagaka/sakurascript.svg)](https://david-dm.org/Ikagaka/sakurascript)
 [![devDependency Status](https://david-dm.org/Ikagaka/sakurascript/dev-status.svg)](https://david-dm.org/Ikagaka/sakurascript#info=devDependencies)
@@ -43,4 +41,4 @@ console.log(JSON.stringify(obj));
 
 ## License
 
-This is released under [MIT License](http://narazaka.net/license/MIT?2015).
+This is released under [MIT License](http://narazaka.net/license/MIT?2016).
