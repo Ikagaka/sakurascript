@@ -600,12 +600,12 @@ export namespace SakuraScriptToken {
   }
 
   /** char like */
-  export interface Char extends SakuraScriptToken {
+  export abstract class Char extends SakuraScriptToken {
     readonly char: string;
   }
 
   /** a char */
-  export class SimpleChar extends SakuraScriptToken implements Char {
+  export class SimpleChar extends Char {
     constructor(public rawChar: string) { super(); }
 
     get char() {
@@ -616,7 +616,7 @@ export namespace SakuraScriptToken {
   }
 
   /** \\\\ */
-  export class EscapeChar extends SakuraScriptToken implements Char {
+  export class EscapeChar extends Char {
     constructor() { super(); }
 
     get char() { return "\\"; }
@@ -625,7 +625,7 @@ export namespace SakuraScriptToken {
   }
 
   /** \\_u[0x01] */
-  export class UCSChar extends SakuraScriptToken implements Char {
+  export class UCSChar extends Char {
     constructor(public codePoint: number) { super(); }
 
     get char() { return `&#${this.codePoint};`; }
@@ -634,7 +634,7 @@ export namespace SakuraScriptToken {
   }
 
   /** \\_m[0x01] */
-  export class AsciiChar extends SakuraScriptToken implements Char {
+  export class AsciiChar extends Char {
     constructor(public codePoint: number) { super(); }
 
     get char() { return `&#${this.codePoint};`; }
@@ -643,7 +643,7 @@ export namespace SakuraScriptToken {
   }
 
   /** \\&[amp] */
-  export class EntityChar extends SakuraScriptToken implements Char {
+  export class EntityChar extends Char {
     constructor(public entity: string) { super(); }
 
     get char() { return `&${this.entity};`; }
