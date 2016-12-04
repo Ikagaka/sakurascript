@@ -1,0 +1,25 @@
+{
+    "extends": [
+        "tslint:recommended"
+    ],
+    "rules": {
+        "member-access": [
+            false
+        ],
+        "interface-name": [
+            false
+        ],
+        "no-namespace": false,
+        "curly": false,
+        "variable-name": [true, "allow-leading-underscore", "allow-pascal-case"],
+        "object-literal-sort-keys": false,
+        "max-classes-per-file": [
+            false
+        ],
+        "no-string-literal": false,
+        "arrow-parens": false,
+        "trailing-comma": [
+            false
+        ]
+    }
+}
