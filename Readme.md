@@ -1,5 +1,7 @@
 # [sakurascript](http://github.com/Ikagaka/sakurascript)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Ikagaka/sakurascript.svg)](https://greenkeeper.io/)
+
 [![npm](https://img.shields.io/npm/v/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
 [![npm license](https://img.shields.io/npm/l/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
 [![npm download total](https://img.shields.io/npm/dt/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
