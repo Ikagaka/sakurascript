@@ -5,12 +5,14 @@
 [![npm download total](https://img.shields.io/npm/dt/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
 [![npm download by month](https://img.shields.io/npm/dm/sakurascript.svg)](https://www.npmjs.com/package/sakurascript)
 
-[![Dependency Status](https://david-dm.org/Ikagaka/sakurascript.svg)](https://david-dm.org/Ikagaka/sakurascript)
-[![devDependency Status](https://david-dm.org/Ikagaka/sakurascript/dev-status.svg)](https://david-dm.org/Ikagaka/sakurascript#info=devDependencies)
-[![Travis Build Status](https://travis-ci.org/Ikagaka/sakurascript.svg)](https://travis-ci.org/Ikagaka/sakurascript)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Ikagaka/sakurascript?svg=true)](https://ci.appveyor.com/project/Narazaka/sakurascript)
+[![Dependency Status](https://david-dm.org/Ikagaka/sakurascript/status.svg)](https://david-dm.org/Ikagaka/sakurascript)
+[![devDependency Status](https://david-dm.org/Ikagaka/sakurascript/dev-status.svg)](https://david-dm.org/Ikagaka/sakurascript?type=dev)
+[![Travis Build Status](https://travis-ci.org/Ikagaka/sakurascript.svg?branch=master)](https://travis-ci.org/Ikagaka/sakurascript)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Ikagaka/sakurascript?svg=true&branch=master)](https://ci.appveyor.com/project/Narazaka/sakurascript)
 [![codecov.io](https://codecov.io/github/Ikagaka/sakurascript/coverage.svg?branch=master)](https://codecov.io/github/Ikagaka/sakurascript?branch=master)
 [![Code Climate](https://codeclimate.com/github/Ikagaka/sakurascript/badges/gpa.svg)](https://codeclimate.com/github/Ikagaka/sakurascript)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1f2c243fa5a443ba939855b17cb6f703)](https://www.codacy.com/app/narazaka/sakurascript?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ikagaka/sakurascript&amp;utm_campaign=Badge_Grade)
+[![Greenkeeper badge](https://badges.greenkeeper.io/Ikagaka/sakurascript.svg)](https://greenkeeper.io/)
 
 SakuraScript Parser/Builder
 
