@@ -1,6 +1,29 @@
-const config = require("webpack-config-narazaka-ts-js").node;
+const path = require("path");
+const tsconfig = require("./tsconfig.json");
 
-config.entry.sakurascript = "./src/lib/sakurascript.ts";
-config.output.library = "sakurascript";
-
-module.exports = config;
+module.exports = {
+  entry:  {shiorijk: "./lib/sakurascript.ts"},
+  output: {
+    library:       "sakurascript",
+    libraryTarget: "umd",
+    path:          path.resolve("."),
+    filename:      "dist/lib/[name].js",
+  },
+  module: {
+    rules: [
+      {
+        test:    /\.ts$/,
+        loader:  "ts-loader",
+        exclude: /node_modules/,
+        options: {compilerOptions: tsconfig.compilerOptions},
+      },
+    ],
+  },
+  resolve: {
+    extensions: [
+      ".ts",
+      ".js",
+    ],
+  },
+  devtool: "source-map",
+};

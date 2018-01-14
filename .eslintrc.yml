@@ -1,6 +1,3 @@
-parser: babel-eslint
 extends: narazaka
-env:
-  es6: true
-  node: true
-  mocha: true
+rules:
+  func-names: 0

@@ -2,8 +2,9 @@
     "compileOnSave": true,
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es2015",
+        "target": "es5",
         "declaration": true,
+        "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noImplicitReturns": true,
@@ -12,7 +13,9 @@
         "noUnusedParameters": true,
         "preserveConstEnums": true,
         "sourceMap": true,
+        "sourceRoot": ".",
         "strictNullChecks": true,
+        "outDir": "dist",
         "lib": [
             "es2016",
             "dom"
@@ -20,7 +23,6 @@
     },
     "exclude": [
         "node_modules",
-        "dist",
-        "test"
+        "dist"
     ]
 }

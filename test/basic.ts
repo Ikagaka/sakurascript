@@ -1,6 +1,6 @@
 /// <reference types="mocha" />
 import * as assert from "power-assert";
-import {SakuraScript} from "../src/lib/sakurascript";
+import {SakuraScript} from "../lib/sakurascript";
 
 const scripts = [
   "\\0\\s[0]\\t\\_shello\\w[10], \\w4world!\\_s\\e",

@@ -11,7 +11,7 @@ const joinargs = (args: string[]) =>
     .join(",");
 
 const getClassName = (obj: any) => // for IE or some
-  obj.constructor.name || (<RegExpMatchArray> obj.constructor.toString().slice(9).match(/^[^\s(]+/))[0];
+  obj.constructor.name || (obj.constructor.toString().slice(9).match(/^[^\s(]+/) as RegExpMatchArray)[0];
 
 /** Sakura Script Parser/Builder */
 export class SakuraScript {
@@ -80,11 +80,11 @@ export abstract class SakuraScriptToken {
    */
   static fromObject(json: {[name: string]: any}) {
     const tokenClass = json["namespace"] == null ?
-      (<any> SakuraScriptToken)[json["class"]] :
-      (<any> SakuraScriptToken)[json["namespace"]][json["class"]];
-    const instance = <SakuraScriptToken> new tokenClass();
+      (SakuraScriptToken as any)[json["class"]] :
+      (SakuraScriptToken as any)[json["namespace"]][json["class"]];
+    const instance = new tokenClass() as SakuraScriptToken;
     for (const key of Object.keys(json)) {
-      if (key !== "class") (<any> instance)[key] = json[key];
+      if (key !== "class") (instance as any)[key] = json[key];
     }
     return instance;
   }
@@ -100,7 +100,7 @@ export abstract class SakuraScriptToken {
     const className = getClassName(this);
     const json: {[name: string]: any} = {class: className};
     for (const key of Object.keys(this)) {
-      json[key] = (<any> this)[key];
+      json[key] = (this as any)[key];
     }
     return json;
   }
@@ -791,21 +791,24 @@ export namespace SakuraScriptToken {
 
 const fontClassHash: {[fontClassName: string]: new(...args: any[]) => SakuraScriptToken} = {};
 for (const fontClassName of Object.keys(SakuraScriptToken.Font)) {
-  fontClassHash[fontClassName.toLowerCase()] = (<any> SakuraScriptToken.Font)[fontClassName];
+  fontClassHash[fontClassName.toLowerCase()] = (SakuraScriptToken.Font as any)[fontClassName];
 }
 
 export namespace SakuraScript {
 
-  export type TagMatcher = {re: RegExp, match: (group: string[]) => SakuraScriptToken};
+  export interface TagMatcher {
+    re: RegExp;
+    match: (group: string[]) => SakuraScriptToken;
+  }
 
   export const tagMatchers: TagMatcher[] = [
-    {re: /^\\([h0])/, match: (group) => new SakuraScriptToken.Scope(0, <"h" | "0"> group[1])},
-    {re: /^\\([u1])/, match: (group) => new SakuraScriptToken.Scope(1, <"u" | "1"> group[1])},
+    {re: /^\\([h0])/, match: (group) => new SakuraScriptToken.Scope(0, group[1] as "h" | "0")},
+    {re: /^\\([u1])/, match: (group) => new SakuraScriptToken.Scope(1, group[1] as "u" | "1")},
     {re: /^\\p\[(\d+)\]/, match: (group) => new SakuraScriptToken.Scope(Number(group[1]), "bracket")},
     {re: /^\\p(\d)/, match: (group) => new SakuraScriptToken.Scope(Number(group[1]), "nobracket")},
     {re: /^\\s(\d)/, match: (group) => new SakuraScriptToken.Surface(Number(group[1]), false)},
     {re: /^\\s\[([^\]]+)\]/, match: (group) =>
-      isNaN(<any> group[1]) ?
+      isNaN(group[1] as any) ?
       new SakuraScriptToken.SurfaceAlias(group[1]) :
       new SakuraScriptToken.Surface(Number(group[1]), true)
     },
