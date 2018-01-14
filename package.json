@@ -52,7 +52,6 @@
     "karma-webpack": "^2.0.9",
     "mocha": "^4.1.0",
     "nyc": "^11.4.1",
-    "phantomjs-prebuilt": "^2.1.16",
     "power-assert": "^1.4.4",
     "shx": "^0.2.2",
     "ts-loader": "^3.2.0",
