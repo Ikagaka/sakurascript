@@ -2,7 +2,7 @@ const path = require("path");
 const tsconfig = require("./tsconfig.json");
 
 module.exports = {
-  entry:  {shiorijk: "./lib/sakurascript.ts"},
+  entry:  {sakurascript: "./lib/sakurascript.ts"},
   output: {
     library:       "sakurascript",
     libraryTarget: "umd",
