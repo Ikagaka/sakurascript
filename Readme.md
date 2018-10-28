@@ -35,4 +35,4 @@ console.log(JSON.stringify(obj));
 
 ## License
 
-This is released under [MIT License](http://narazaka.net/license/MIT?2016).
+This is released under [Zlib License](http://narazaka.net/license/Zlib?2018).
