@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>sakurascript</title>
+	<title>TagMatcher | sakurascript</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">sakurascript</a>
+					<a href="../index.html" class="title">sakurascript</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -51,64 +51,142 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../classes/sakurascript.html">SakuraScript</a>
+				</li>
+				<li>
+					<a href="sakurascript.tagmatcher.html">TagMatcher</a>
 				</li>
 			</ul>
-			<h1> sakurascript</h1>
+			<h1>Interface TagMatcher</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="sakurascript"><a href="http://github.com/Ikagaka/sakurascript">sakurascript</a></h1>
-				<p><a href="https://www.npmjs.com/package/sakurascript"><img src="https://img.shields.io/npm/v/sakurascript.svg" alt="npm"></a>
-					<a href="https://www.npmjs.com/package/sakurascript"><img src="https://img.shields.io/npm/l/sakurascript.svg" alt="npm license"></a>
-					<a href="https://www.npmjs.com/package/sakurascript"><img src="https://img.shields.io/npm/dt/sakurascript.svg" alt="npm download total"></a>
-				<a href="https://www.npmjs.com/package/sakurascript"><img src="https://img.shields.io/npm/dm/sakurascript.svg" alt="npm download by month"></a></p>
-				<p><a href="https://david-dm.org/Ikagaka/sakurascript"><img src="https://david-dm.org/Ikagaka/sakurascript/status.svg" alt="Dependency Status"></a>
-					<a href="https://david-dm.org/Ikagaka/sakurascript?type=dev"><img src="https://david-dm.org/Ikagaka/sakurascript/dev-status.svg" alt="devDependency Status"></a>
-					<a href="https://travis-ci.org/Ikagaka/sakurascript"><img src="https://travis-ci.org/Ikagaka/sakurascript.svg?branch=master" alt="Travis Build Status"></a>
-					<a href="https://ci.appveyor.com/project/Narazaka/sakurascript"><img src="https://ci.appveyor.com/api/projects/status/github/Ikagaka/sakurascript?svg=true&branch=master" alt="AppVeyor Build Status"></a>
-					<a href="https://codecov.io/github/Ikagaka/sakurascript?branch=master"><img src="https://codecov.io/github/Ikagaka/sakurascript/coverage.svg?branch=master" alt="codecov.io"></a>
-					<a href="https://codeclimate.com/github/Ikagaka/sakurascript"><img src="https://codeclimate.com/github/Ikagaka/sakurascript/badges/gpa.svg" alt="Code Climate"></a>
-					<a href="https://www.codacy.com/app/narazaka/sakurascript?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ikagaka/sakurascript&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/1f2c243fa5a443ba939855b17cb6f703" alt="Codacy Badge"></a>
-				<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/Ikagaka/sakurascript.svg" alt="Greenkeeper badge"></a></p>
-				<p>SakuraScript Parser/Builder</p>
-				<h2 id="usage">Usage</h2>
-				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> SakuraScript = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sakurascript'</span>).SakuraScript;
-
-<span class="hljs-keyword">var</span> script = <span class="hljs-string">'\\0\\s[0]Hello, \\w4world!\\e'</span>;
-<span class="hljs-keyword">var</span> ss = SakuraScript.parse(script);
-<span class="hljs-keyword">var</span> obj = ss.toObject();
-<span class="hljs-built_in">console</span>.log(script);
-<span class="hljs-built_in">console</span>.log(ss.toSakuraScript());
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(obj));</code></pre>
-				<h2 id="api">API</h2>
-				<p><a href="https://ikagaka.github.io/sakurascript/index.html">API Document</a></p>
-				<h2 id="license">License</h2>
-				<p>This is released under <a href="http://narazaka.net/license/MIT?2016">MIT License</a>.</p>
-			</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">TagMatcher</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sakurascript.tagmatcher.html#match" class="tsd-kind-icon">match</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sakurascript.tagmatcher.html#re" class="tsd-kind-icon">re</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="match" class="tsd-anchor"></a>
+					<h3>match</h3>
+					<div class="tsd-signature tsd-kind-icon">match<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Ikagaka/sakurascript/blob/60ca58f/lib/sakurascript.ts#L801">sakurascript.ts:801</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>group<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/sakurascripttoken.html" class="tsd-signature-type">SakuraScriptToken</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>group: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../classes/sakurascripttoken.html" class="tsd-signature-type">SakuraScriptToken</a></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="re" class="tsd-anchor"></a>
+					<h3>re</h3>
+					<div class="tsd-signature tsd-kind-icon">re<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Ikagaka/sakurascript/blob/60ca58f/lib/sakurascript.ts#L800">sakurascript.ts:800</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-module tsd-parent-kind-class">
-						<a href="modules/sakurascripttoken.font.html">Sakura<wbr>Script<wbr>Token.<wbr>Font</a>
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/sakurascript.html" class="tsd-kind-icon">Sakura<wbr>Script</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="../classes/sakurascript.html" class="tsd-kind-icon">Sakura<wbr>Script</a>
+						<ul>
+							<li class="current tsd-kind-interface tsd-parent-kind-class">
+								<a href="sakurascript.tagmatcher.html" class="tsd-kind-icon">Tag<wbr>Matcher</a>
+								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="sakurascript.tagmatcher.html#match" class="tsd-kind-icon">match</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="sakurascript.tagmatcher.html#re" class="tsd-kind-icon">re</a>
+									</li>
+								</ul>
+							</li>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="../classes/sakurascript.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="../classes/sakurascript.html#tokens" class="tsd-kind-icon">tokens</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="../classes/sakurascript.html#tagmatchers" class="tsd-kind-icon">tag<wbr>Matchers</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="../classes/sakurascript.html#toobject" class="tsd-kind-icon">to<wbr>Object</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="../classes/sakurascript.html#tosakurascript" class="tsd-kind-icon">to<wbr>Sakura<wbr>Script</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="../classes/sakurascript.html#fromobject" class="tsd-kind-icon">from<wbr>Object</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="../classes/sakurascript.html#parse" class="tsd-kind-icon">parse</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
-						<a href="classes/sakurascripttoken.html" class="tsd-kind-icon">Sakura<wbr>Script<wbr>Token</a>
+						<a href="../classes/sakurascripttoken.html" class="tsd-kind-icon">Sakura<wbr>Script<wbr>Token</a>
 					</li>
 				</ul>
 			</nav>
@@ -178,7 +256,7 @@
 	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
