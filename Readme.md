@@ -18,18 +18,9 @@ SakuraScript Parser/Builder
 
 ## Usage
 
-node.js:
 ```javascript
-var sakurascript = require('sakurascript');
-var SakuraScript = sakurascript.SakuraScript;
-```
+var SakuraScript = require('sakurascript').SakuraScript;
 
-browser:
-```html
-<script src="sakurascript.js"></script>
-```
-
-```javascript
 var script = '\\0\\s[0]Hello, \\w4world!\\e';
 var ss = SakuraScript.parse(script);
 var obj = ss.toObject();
