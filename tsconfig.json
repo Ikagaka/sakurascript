@@ -2,7 +2,7 @@
     "compileOnSave": true,
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5",
+        "target": "es2017",
         "declaration": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
@@ -13,12 +13,10 @@
         "noUnusedParameters": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "sourceRoot": ".",
         "strictNullChecks": true,
         "outDir": "dist",
         "lib": [
-            "es2016",
-            "dom"
+            "es2017"
         ]
     },
     "exclude": [
