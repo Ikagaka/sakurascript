@@ -14,5 +14,3 @@ deploy: off
 environment:
   matrix:
     - nodejs_version: LTS
-cache:
-  - node_modules
