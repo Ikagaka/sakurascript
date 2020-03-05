@@ -32,7 +32,7 @@
     "nyc": "^15.0.0",
     "power-assert": "^1.4.4",
     "shx": "^0.3.0",
-    "tslint": "^5.9.1",
+    "tslint": "^6.0.0",
     "typedoc": "^0.16.11",
     "typescript": "^3.1.3"
   },
