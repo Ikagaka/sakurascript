@@ -1,0 +1,25 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "airbnb-typescript/base",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "max-classes-per-file": ["off"],
+    "no-underscore-dangle": ["off"],
+    "spaced-comment": ["error", "always", { "markers": ["/"] }],
+    "no-restricted-syntax": "off",
+    "class-methods-use-this": "off",
+    "new-cap": "off",
+    "@typescript-eslint/no-implied-eval": "off",
+    "@typescript-eslint/no-throw-literal": "off"
+  }
+}
