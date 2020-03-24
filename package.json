@@ -39,7 +39,7 @@
     "mocha": "^7.1.0",
     "nyc": "^15.0.0",
     "power-assert": "^1.6.1",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "shx": "^0.3.2",
     "typedoc": "^0.16.11",
     "typescript": "^3.8.3"
