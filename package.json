@@ -41,7 +41,7 @@
     "power-assert": "^1.6.1",
     "prettier": "^1.19.1",
     "shx": "^0.3.2",
-    "typedoc": "^0.16.11",
+    "typedoc": "^0.17.4",
     "typescript": "^3.8.3"
   },
   "url": "https://github.com/Ikagaka/sakurascript",
